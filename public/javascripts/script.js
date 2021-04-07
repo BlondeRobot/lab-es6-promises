@@ -7,7 +7,7 @@
 //}
 
 // Iteration 1 using callbacks
-addFood(steak[0], '#steak', () => {
+const addSteak = ()=> {addFood(steak[0], '#steak', () => {
   addFood(steak[1], '#steak', () => {
     addFood(steak[2], '#steak', () => {
       addFood(steak[3], '#steak', () => {
@@ -25,11 +25,12 @@ addFood(steak[0], '#steak', () => {
     })
   })
 });
+}
 
 
 
 // Iteration 2 using `.then()`
-addFood(mashPotatoes[0], '#mashPotatoes').then(() => {
+const addMashPotatoes = ()=> {addFood(mashPotatoes[0], '#mashPotatoes').then(() => {
   addFood(mashPotatoes[1], '#mashPotatoes').then(() => {
     addFood(mashPotatoes[2], '#mashPotatoes').then(() => {
       addFood(mashPotatoes[3], '#mashPotatoes').then(() => {
@@ -41,6 +42,7 @@ addFood(mashPotatoes[0], '#mashPotatoes').then(() => {
     })
   })
 });
+}
 
 // // Iteration 3 using async and await
 
@@ -50,23 +52,54 @@ addFood(mashPotatoes[0], '#mashPotatoes').then(() => {
 //   }
 //   makeFood(eachStep);
 
-addFood(brusselSprouts[0], '#brusselSprouts', () => {
-  addFood(brusselSprouts[1], '#brusselSprouts', () => {
-    addFood(brusselSprouts[2], '#brusselSprouts', () => {
-      addFood(brusselSprouts[3], '#brusselSprouts', () => {
-        addFood(brusselSprouts[4], '#brusselSprouts', () => {
-          addFood(brusselSprouts[5], '#brusselSprouts', () => {
-            addFood(brusselSprouts[6], '#brusselSprouts', () => {
-              addFood(brusselSprouts[7], '#brusselSprouts', () => {
-                addFood(brusselSprouts[8], '#brusselSprouts', () => {
-                  document.getElementById("table").innerHTML +=
-                  '<img src="public/images/brusselSprouts.jpg"/>';
-                })
-              })
-            })
-          })
-        })
-      })
-    })
-  })
-})
+const addBrusselSprouts = () => {
+  addFood(brusselSprouts[0], "#brusselSprouts").then(() => {
+    addFood(brusselSprouts[1], "#brusselSprouts").then(() => {
+      addFood(brusselSprouts[2], "#brusselSprouts").then(() => {
+        addFood(brusselSprouts[3], "#brusselSprouts").then(() => {
+          addFood(brusselSprouts[4], "#brusselSprouts").then(() => {
+            addFood(brusselSprouts[5], "#brusselSprouts").then(() => {
+              addFood(brusselSprouts[6], "#brusselSprouts").then(() => {
+                addFood(brusselSprouts[7], "#brusselSprouts").then(() => {
+                  addFood(brusselSprouts[8], "#brusselSprouts").then(() => {
+                    document.getElementById("table").innerHTML +=
+                      '<img src="public/images/brusselSprouts.jpg"/>';
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+};
+
+// const addBrusselSprouts = ()=> {addFood(brusselSprouts[0], '#brusselSprouts', () => {
+//   addFood(brusselSprouts[1], '#brusselSprouts', () => {
+//     addFood(brusselSprouts[2], '#brusselSprouts', () => {
+//       addFood(brusselSprouts[3], '#brusselSprouts', () => {
+//         addFood(brusselSprouts[4], '#brusselSprouts', () => {
+//           addFood(brusselSprouts[5], '#brusselSprouts', () => {
+//             addFood(brusselSprouts[6], '#brusselSprouts', () => {
+//               addFood(brusselSprouts[7], '#brusselSprouts', () => {
+//                 addFood(brusselSprouts[8], '#brusselSprouts', () => {
+//                   document.getElementById("table").innerHTML +=
+//                   '<img src="public/images/brusselSprouts.jpg"/>';
+//                 })
+//               })
+//             })
+//           })
+//         })
+//       })
+//     })
+//   })
+// })
+// }
+
+Promise.all([addSteak(), addMashPotatoes(), addBrusselSprouts()]).then(() => {
+  document.body.innerHTML += `
+     <button onclick="new Audio('public/media/dinnerIsServed.mp3').play()">Dinner is served</button>
+   `;
+  
+});
